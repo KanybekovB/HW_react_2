@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class ToggleColor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isRed: true,
+    }
+  }
+  toggleColor = () => {
+    this.setState({ isRed: !this.state.isRed });
+  }
+  
+  render() {
+    const bgColor = this.state.isRed ? 'red' : 'blue';
+    
+    return (
+      <div className = 'block-container'>
+        <button className='block' onClick={this.toggleColor} style={{backgroundColor: bgColor}}></button>
+        <button className='block' onClick={this.toggleColor} style={{backgroundColor: bgColor === 'red' ? 'blue' : 'red'}}></button>
+      </div>
+    
+    )
+  }
 }
 
-export default App;
+// export default ToggleColor;
+
+// import React, { useState } from 'react';
+
+// function ToggleColor() {
+//   const [isRed, setIsRed] = useState(true);
+
+//   const toggleColor = () => {
+//     setIsRed(!isRed);
+//   };
+
+//   const bgColor = isRed ? 'red' : 'blue';
+
+//   return (
+//     <button className='block' onClick={toggleColor} style={{ backgroundColor: bgColor }}>
+//       Toggle Color
+//     </button>
+//   );
+// }
+
+export default ToggleColor;
+
