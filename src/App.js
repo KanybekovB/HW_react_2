@@ -1,41 +1,33 @@
 import React from 'react';
 
-class BlockColor extends React.Component {
+class ToggleColor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: props.backgroundColor
+      isRed: true,
     }
   }
   toggleColor = () => {
-    this.setState((state) => ({
-      color: state.color === 'red' ? 'blue' : 'red',
-    }));
-  };
+    this.setState({ isRed: !this.state.isRed });
+  }
   
   render() {
-    const bgColor = this.state.color
+    const bgColor = this.state.isRed ? 'red' : 'blue';
+    
     return (
-      <div className='block' 
-      onClick={this.toggleColor}
-      style={{backgroundColor: bgColor}}>
+      <div className = 'block-container'>
+        <button className='block' 
+        onClick={this.toggleColor} 
+        style={{backgroundColor: bgColor}}></button>
+
+        <button className='block' 
+        onClick={this.toggleColor} 
+        style={{backgroundColor: bgColor === 'red' ? 'blue' : 'red'}}>
+        </button>
       </div>
     )
   }
 }
-
-class ToggleColor extends React.Component {
-  render() {
-    return (
-      <div className='block-container'>
-        <BlockColor backgroundColor='red'/>
-        <BlockColor backgroundColor='blue'/>
-      </div>
-    )
-  }
-}
-
-
 
 // export default ToggleColor;
 
